@@ -5,9 +5,9 @@ use std::io::ErrorKind;
 use std::io::Read;
 use std::path::Path;
 
-use hyper::client::connect::HttpConnector;
-use hyper::Client;
-use hyper_rustls::HttpsConnector;
+// use hyper::client::connect::HttpConnector;
+// use hyper::Client;
+// use hyper_rustls::HttpsConnector;
 use rustls::internal::pemfile::certs;
 use rustls::internal::pemfile::rsa_private_keys;
 use rustls::Certificate;
@@ -41,9 +41,9 @@ impl ServerCertVerifier for NoVerifier {
 
 */
 
-pub struct HyperClientBuilder(ClientConfig);
+pub struct H1lientBuilder(ClientConfig);
 
-impl ConfigBuilder for HyperClientBuilder {
+impl ConfigBuilder for H1lientBuilder {
     type Client = HyperHttpsClient;
 
     fn new() -> Self {

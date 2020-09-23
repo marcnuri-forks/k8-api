@@ -4,22 +4,22 @@ use std::sync::Arc;
 
 use async_trait::async_trait;
 use bytes::buf::ext::BufExt;
-use futures::future::FutureExt;
-use futures::stream::empty;
-use futures::stream::BoxStream;
-use futures::stream::Stream;
-use futures::stream::StreamExt;
-use futures::stream::TryStreamExt;
-use hyper::body::aggregate;
-use hyper::body::Bytes;
-use hyper::header::HeaderValue;
-use hyper::header::ACCEPT;
-use hyper::header::AUTHORIZATION;
-use hyper::header::CONTENT_TYPE;
-use hyper::Body;
-use hyper::Request;
-use hyper::StatusCode;
-use hyper::Uri;
+use futures_lite::future::FutureExt;
+use futures_lite::stream::empty;
+use futures_lite::stream::BoxStream;
+use futures_lite::stream::Stream;
+use futures_lite::stream::StreamExt;
+use futures_lite::stream::TryStreamExt;
+// use hyper::body::aggregate;
+// use hyper::body::Bytes;
+// use hyper::header::HeaderValue;
+// use hyper::header::ACCEPT;
+// use hyper::header::AUTHORIZATION;
+// use hyper::header::CONTENT_TYPE;
+// use hyper::Body;
+// use hyper::Request;
+// use hyper::StatusCode;
+// use hyper::Uri;
 use serde::de::DeserializeOwned;
 use serde_json;
 use serde_json::Value;
@@ -49,12 +49,11 @@ use super::wstream::WatchStream;
 use crate::uri::item_uri;
 use crate::uri::items_uri;
 use crate::ClientError;
-use crate::ListStream;
+// use crate::ListStream;
 
 /// K8 Cluster accessible thru API
 #[derive(Debug)]
 pub struct K8Client {
-    client: HyperHttpsClient,
     host: String,
     token: Option<String>,
 }

@@ -2,14 +2,10 @@ use std::env;
 use std::fmt;
 use std::io::Error as IoError;
 
-#[cfg(feature = "native")]
-use isahc::Error as IsahcError;
 
-#[cfg(feature = "hyper2")]
-use hyper::error::Error as HyperError;
 
-use crate::http::header::InvalidHeaderValue;
-use crate::http::Error as HttpError;
+//use crate::http::header::InvalidHeaderValue;
+// use crate::http::Error as HttpError;
 
 use k8_config::ConfigError;
 use k8_diff::DiffError;
@@ -24,12 +20,12 @@ pub enum ClientError {
     EnvError(env::VarError),
     JsonError(serde_json::Error),
     DiffError(DiffError),
-    HttpError(HttpError),
-    InvalidHttpHeader(InvalidHeaderValue),
-    #[cfg(feature = "native")]
-    IsahcError(IsahcError),
-    #[cfg(feature = "hyper2")]
-    HyperError(HyperError),
+ //   HttpError(HttpError),
+ //   InvalidHttpHeader(InvalidHeaderValue),
+ //   #[cfg(feature = "native")]
+ //   IsahcError(IsahcError),
+ //   #[cfg(feature = "hyper2")]
+  //  HyperError(HyperError),
     K8ConfigError(ConfigError),
     PatchError,
     NotFound,
@@ -65,7 +61,7 @@ impl From<IsahcError> for ClientError {
         Self::IsahcError(error)
     }
 }
-
+/*
 impl From<HttpError> for ClientError {
     fn from(error: HttpError) -> Self {
         Self::HttpError(error)
@@ -84,12 +80,14 @@ impl From<InvalidHeaderValue> for ClientError {
         Self::InvalidHttpHeader(error)
     }
 }
+*/
 
 impl From<ConfigError> for ClientError {
     fn from(error: ConfigError) -> Self {
         Self::K8ConfigError(error)
     }
 }
+
 
 impl fmt::Display for ClientError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {

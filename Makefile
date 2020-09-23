@@ -1,6 +1,8 @@
 publish:
 	 cargo-publish-all
 
+build-all:
+	cargo build --all
 
 build-hyper:
 	make -C src/k8-client build-hyper
